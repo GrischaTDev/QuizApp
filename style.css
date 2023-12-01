@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    background-color: orange !important;
+}
+
+/* Card Section */
+
+
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz-card {
+    width: 30rem;
+}
+
+.quiz-card-answer:hover {
+    background-color: rgba(219, 219, 219, 0.26);
+    cursor: pointer;
+}
+
+.question-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 3px solid orange;
+    padding-top: 12px;
+}
