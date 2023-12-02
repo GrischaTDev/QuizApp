@@ -20,8 +20,11 @@
     </nav>
 
     <main>
-        <div class="card quiz-card">
+        <div id="finish-quiz" class="card quiz-card">
             <img src="./img/background.jpg" class="card-img-top" alt="...">
+            <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar" id="progress-bar" style="width: 25%">25%</div>
+            </div>
             <div class="card-body">
               <h5 class="card-title" id="questiontext"></h5>
               
@@ -39,8 +42,8 @@
               </div>
 
               <div class="question-footer">
-                <div><b>1</b> von <b id="questions-length"></b> Fragen</div>
-                <button class="btn btn-primary">Nächste Frage</button>
+                <div><b id="current-question"></b> von <b id="questions-length"></b> Fragen</div>
+                <button onclick="nextQuestion()" class="btn btn-primary" id="next-button" disabled>Nächste Frage</button>
               </div>
             </div>
           </div>

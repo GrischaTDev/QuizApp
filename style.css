@@ -28,3 +28,30 @@ main {
     border-top: 3px solid orange;
     padding-top: 12px;
 }
+
+.bg-success, .bg-danger {
+    color: white !important;
+}
+
+.end-screen {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 48px;
+}
+
+.end-screen img {
+    height: 90px;
+}
+
+h1 {
+    font-size: 26px !important;
+    text-align: center;
+}
+
+.progress {
+    border-radius: 0 !important;
+}
