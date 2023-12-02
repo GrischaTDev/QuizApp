@@ -54,29 +54,16 @@ function init() {
 
 function showQuestion() {
     // show End Screen
-    if(currentQuestion >= questions.length) {
-        document.getElementById('finish-quiz').innerHTML = /* html */`
-        <div class="end-screen">
-            <h1>Herzlichen Glückwunsch <br>Sie haben das Quiz erfolgreich abgeschlossen!</h1>
-            <img src="./img/trophy-black.svg" alt="">
-            <b>Du hast ${correctQuestions} von ${questions.length} Fragen richtig beantwortet.</b>
-            <a href="./"><button onclick="restartGame()" class="btn btn-primary">Nochmal Spielen</button></a>
-        </div>
-        `;
+    if(gameIsOver()) {
+        showEndScreen();
     } else { // show question
-        let percent = (currentQuestion +1) / questions.length;
-        percent = Math.round(percent * 100); // Erst wird der inhalt in der klammer ausgrechnet, dann gerundet und dann in die Variable gegeben.
-        document.getElementById('progress-bar').innerHTML = `${percent} %`;
-        document.getElementById('progress-bar').style = `width: ${percent}%`;
-
-        let question = questions[currentQuestion];
-        document.getElementById('current-question').innerHTML = currentQuestion+1;
-        document.getElementById('questiontext').innerHTML = question['question'];
-        document.getElementById('answer_1').innerHTML = question['answer_1'];
-        document.getElementById('answer_2').innerHTML = question['answer_2'];
-        document.getElementById('answer_3').innerHTML = question['answer_3'];
-        document.getElementById('answer_4').innerHTML = question['answer_4'];
+        updateProgressBar();
+        updateToNextQuestion();
     }
+}
+
+function gameIsOver() {
+    return currentQuestion >= questions.length
 }
 
 function answer(selection) {  // Selection hat den Wert den wir über die onclick function im HTML übergeben haben.
@@ -118,4 +105,32 @@ function resetAnswerButtons() {
 function restartGame() {
     currentQuestion = 0;
     correctQuestions = 0;
+}
+
+function showEndScreen() {
+    document.getElementById('finish-quiz').innerHTML = /* html */`
+    <div class="end-screen">
+        <h1>Herzlichen Glückwunsch <br>Sie haben das Quiz erfolgreich abgeschlossen!</h1>
+        <img src="./img/trophy-black.svg" alt="">
+        <b>Du hast ${correctQuestions} von ${questions.length} Fragen richtig beantwortet.</b>
+        <a href="./"><button onclick="restartGame()" class="btn btn-primary">Nochmal Spielen</button></a>
+    </div>
+    `;
+}
+
+function updateProgressBar() {
+    let percent = (currentQuestion +1) / questions.length;
+    percent = Math.round(percent * 100); // Erst wird der inhalt in der klammer ausgrechnet, dann gerundet und dann in die Variable gegeben.
+    document.getElementById('progress-bar').innerHTML = `${percent} %`;
+    document.getElementById('progress-bar').style = `width: ${percent}%`;
+}
+
+function updateToNextQuestion() {
+    let question = questions[currentQuestion];
+    document.getElementById('current-question').innerHTML = currentQuestion+1;
+    document.getElementById('questiontext').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
 }
